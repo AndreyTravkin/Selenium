@@ -30,3 +30,5 @@ public class Hooks {
         TestContext.teardown();
     }
 }
+
+// To open git - press init Shift Command . at the same type
