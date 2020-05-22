@@ -1,5 +1,6 @@
 package definitions;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -81,7 +82,7 @@ public class SampleStepDef {
     @Then("I verify {string} error text is {string}")
     public void iVerifyErrorTextIs(String field, String text) throws InterruptedException {
 
-        if (field.equalsIgnoreCase("username"))  {
+        if (field.equalsIgnoreCase("username")) {
             Assert.assertEquals(page.getTExtFromUsernameError(), text);
         }
 
@@ -112,4 +113,55 @@ public class SampleStepDef {
     }
 
 
+    @Then("I verify that confirmPassword field is disabled")
+    public void iVerifyThatConfirmPasswordFieldIsDisabled() {
+        Assert.assertFalse(page.isconfirmPasswordFieldEnabled());
+    }
+
+    @When("I click on name field")
+    public void iClickOnNameField() {
+        page.clickOnName();
+    }
+
+    @Then("I verify that nameDialog is displayed")
+    public void iVerifyThatNameDialogIsDisplayed() {
+        page.nameDialogIsDisplayed();
+    }
+
+    @When("I send {string} to the name field")
+    public void iSendToTheNameField(String firstName) {
+        page.typeFirstName(firstName);
+    }
+
+    @And("I send {string} to middle name field")
+    public void iSendToMiddleNameField(String middleName) {
+        page.typeMiddleName(middleName);
+    }
+
+    @And("I send {string} to the last name field")
+    public void iSendToTheLastNameField(String lastName) {
+        page.typeLastName(lastName);
+    }
+
+    @When("I hit save button")
+    public void iHitSaveButton() {
+        page.clickSaveButton();
+    }
+
+    @Then("I verify that name {string}")
+    public void iVerifyThatName(String expectedName) throws InterruptedException {
+        String actualName = page.getTextFromTheNameField();
+
+        Assert.assertEquals(actualName, expectedName);
+    }
+
+    @When("I check privacyPolicy checkbox")
+    public void iCheckPrivacyPolicyCheckbox() {
+        page.clickOnPrivacyPolicyCheckBox();
+    }
+
+    @When("I fill out password field")
+    public void iFillOutPasswordField() {
+
+    }
 }

@@ -38,11 +38,101 @@ public class SapmlePage extends Page {
     @FindBy(xpath = "//label[@id='agreedToPrivacyPolicy-error']")
     private WebElement privacyPolicyError;
 
+    @FindBy(xpath = "//input[@name='agreedToPrivacyPolicy']")
+    private WebElement privacyPolicyCheckBox;
 
     @FindBy(xpath = "//input[@name='username']")
     private WebElement username;
 
+    @FindBy(xpath = "//input[@id='name']")
+    private WebElement nameField;
 
+    @FindBy(xpath = "//div[@id='nameDialog']")
+    private WebElement nameDialog;
+
+    @FindBy(xpath = "//input[@id='firstName']")
+    private WebElement firsName;
+
+    @FindBy(xpath = "//input[@id='middleName']")
+    private WebElement middleName;
+
+    @FindBy(xpath = "//input[@id='lastName']")
+    private WebElement lastName;
+
+    @FindBy(xpath = "//span[contains(text(),'Save')]")
+    private WebElement saveButton;
+
+    @FindBy(xpath = "//input[@id='password']")
+    private WebElement passwordField;
+
+    @FindBy(xpath = "//input[@id='confirmPassword']")
+    private WebElement confirmPasswordField;
+
+    @FindBy(xpath = "//input[@name='phone']")
+    private WebElement phoneField;
+
+    @FindBy(xpath = "//input[@id='dateOfBirth']")
+    private WebElement dateOfBirthField;
+
+    @FindBy(xpath = "//select[@name='countryOfOrigin']")
+    private WebElement countryDropdown;
+
+    @FindBy(xpath = "//span[contains(text(),'Male')]/..//input")
+    private WebElement maleGenderRadioButton;
+
+    @FindBy(xpath = "//select[@name='carMake']//option[contains(text(),'Ford')]")
+    private WebElement fordCarMake;
+
+    @FindBy(xpath = "//select[@name='carMake']//option[contains(text(),'Toyota')]")
+    private WebElement toyotaCarMake;
+
+    @FindBy(xpath = "//input[@name='allowedToContact']")
+    private WebElement allowedToContact;
+
+    @FindBy(xpath = "//button[contains(text(),'Related documents (click)')]")
+    private WebElement relatedDocumentsButton;
+
+    @FindBy(xpath = "//input[@id='attachment']")
+    private WebElement chooseFileButton;
+
+
+    public void clickOnPrivacyPolicyCheckBox() {
+        click(privacyPolicyCheckBox);
+    }
+
+    public void typeFirstName(String firstName) {
+        sendKeys(this.firsName, firstName);
+    }
+
+    public void typeMiddleName(String middleName) {
+        sendKeys(this.middleName, middleName);
+    }
+
+    public void typeLastName(String lastName) {
+        sendKeys(this.lastName, lastName);
+    }
+
+    public void clickSaveButton(){
+        click(saveButton);
+    }
+
+    public String getTextFromTheNameField() {
+        return nameField.getAttribute("value");
+    }
+
+    public boolean nameDialogIsDisplayed() {
+        if (nameDialog.isDisplayed()) {
+            return true;
+        }
+        // qw
+
+        return false;
+
+    }
+
+    public void clickOnName() {
+        click(nameField);
+    }
 
 
     public boolean isLocationPresent() {
@@ -52,6 +142,14 @@ public class SapmlePage extends Page {
         return false;
     }
 
+
+    public boolean isconfirmPasswordFieldEnabled() {
+        if (confirmPasswordField.isEnabled()) {
+            return true;
+        }
+
+        return false;
+    }
 
     public boolean isDatePresent() {
         if (date.isDisplayed()) {
@@ -73,28 +171,28 @@ public class SapmlePage extends Page {
     }
 
 
-    public String getTExtFromUsernameError(){
+    public String getTExtFromUsernameError() {
         return usernameError.getText();
     }
 
 
-    public String getTExtFromEmailError(){
+    public String getTExtFromEmailError() {
         return emailError.getText();
     }
 
-    public String getTExtFromPasswordError(){
+    public String getTExtFromPasswordError() {
         return passwordError.getText();
     }
 
-    public String getTExtFromNamedError(){
+    public String getTExtFromNamedError() {
         return nameError.getText();
     }
 
-    public String getTExtFromPrivacyPolicyError(){
+    public String getTExtFromPrivacyPolicyError() {
         return privacyPolicyError.getText();
     }
 
-    public boolean isUsernameErrorPresent(){
+    public boolean isUsernameErrorPresent() {
         waitForVisible(usernameError);
 
         if (usernameError.isDisplayed()) {
@@ -103,7 +201,7 @@ public class SapmlePage extends Page {
         return false;
     }
 
-    public boolean isUsernameErrorNotPresent(){
+    public boolean isUsernameErrorNotPresent() {
         waitForNotVisible(usernameError);
 
         if (usernameError.isDisplayed()) {
@@ -118,7 +216,7 @@ public class SapmlePage extends Page {
     }
 
     public void fillEmail(String value) {
-      emailField.clear();
-      sendKeys(emailField, value);
+        emailField.clear();
+        sendKeys(emailField, value);
     }
 }
