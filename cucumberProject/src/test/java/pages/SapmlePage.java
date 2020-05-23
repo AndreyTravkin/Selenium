@@ -100,6 +100,10 @@ public class SapmlePage extends Page {
         click(privacyPolicyCheckBox);
     }
 
+    public void  fillOutThePassword(String password) {
+        sendKeys(passwordField, password);
+    }
+
     public void typeFirstName(String firstName) {
         sendKeys(this.firsName, firstName);
     }

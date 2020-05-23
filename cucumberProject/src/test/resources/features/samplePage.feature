@@ -71,8 +71,8 @@ Feature: Training
     And I send "Travkin" to the last name field
     When I hit save button
     When I check privacyPolicy checkbox
-    When I fill out password field
-    When I fill out confirm password field
+    When I fill out password field with "12345"
+    When I fill out confirm password field "12345"
     When I fill out phone number field
     When I select gender as "male"
     When I select country Of Origin is "Russia"

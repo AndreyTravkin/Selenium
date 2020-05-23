@@ -160,8 +160,9 @@ public class SampleStepDef {
         page.clickOnPrivacyPolicyCheckBox();
     }
 
-    @When("I fill out password field")
-    public void iFillOutPasswordField() {
 
+    @When("I fill out password field with {string}")
+    public void iFillOutPasswordFieldWith(String password) {
+        page.fillOutThePassword(password);
     }
 }

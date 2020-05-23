@@ -41,4 +41,7 @@ public class CareersStepDefs {
     public void iCreateViaRESTAPIPosition(String type) {
         new RestWrapper().createPosition(getData(type));
     }
+
+
+
 }
