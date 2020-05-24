@@ -1,7 +1,10 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static support.TestContext.getDriver;
 
 public class SapmlePage extends Page {
     public SapmlePage() {
@@ -129,8 +132,7 @@ public class SapmlePage extends Page {
     }
 
     public void selectGender(String gender) {
-
-        WebElement el = getByXpath("/*[text()='"+gender+"']/..//input");
+        WebElement el = getDriver().findElement(By.xpath("/*[text()='"+gender+"']/..//input"));
         click(el);
     }
 
