@@ -101,6 +101,10 @@ public class SapmlePage extends Page {
     private WebElement chooseFileButton;
 
 
+    private void selectCountryFromDropdown(String country) {
+//         Select select = new Select();
+    }
+
     public void clickOnPrivacyPolicyCheckBox() {
         click(privacyPolicyCheckBox);
     }
