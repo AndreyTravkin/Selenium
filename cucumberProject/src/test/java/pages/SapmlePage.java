@@ -104,6 +104,14 @@ public class SapmlePage extends Page {
         sendKeys(passwordField, password);
     }
 
+    public void  fillOutConfirmPassword(String password) {
+        sendKeys(confirmPasswordField, password);
+    }
+
+    public void  fillOutThePhoneNumber(String number) {
+        sendKeys(phoneField, number);
+    }
+
     public void typeFirstName(String firstName) {
         sendKeys(this.firsName, firstName);
     }
@@ -118,6 +126,12 @@ public class SapmlePage extends Page {
 
     public void clickSaveButton(){
         click(saveButton);
+    }
+
+    public void selectGender(String gender) {
+
+        WebElement el = getByXpath("/*[text()='"+gender+"']/..//input");
+        click(el);
     }
 
     public String getTextFromTheNameField() {

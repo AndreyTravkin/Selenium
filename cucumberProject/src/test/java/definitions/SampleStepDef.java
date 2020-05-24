@@ -165,4 +165,21 @@ public class SampleStepDef {
     public void iFillOutPasswordFieldWith(String password) {
         page.fillOutThePassword(password);
     }
+
+    @When("I fill out confirm password field {string}")
+    public void iFillOutConfirmPasswordField(String password) {
+        page.fillOutConfirmPassword(password);
+    }
+
+
+    @When("I fill out phone number field with {string}")
+    public void iFillOutPhoneNumberFieldWith(String number) {
+        page.fillOutThePhoneNumber(number);
+    }
+
+    @When("I select gender as {string}")
+    public void iSelectGenderAs(String gender) throws InterruptedException {
+        page.selectGender(gender);
+        Thread.sleep(5000);
+    }
 }

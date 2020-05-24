@@ -73,8 +73,8 @@ Feature: Training
     When I check privacyPolicy checkbox
     When I fill out password field with "12345"
     When I fill out confirm password field "12345"
-    When I fill out phone number field
-    When I select gender as "male"
+    When I fill out phone number field with "3467243437"
+    When I select gender as "Male"
     When I select country Of Origin is "Russia"
     When I fill out the address
     When I accept 3rd party agreement
