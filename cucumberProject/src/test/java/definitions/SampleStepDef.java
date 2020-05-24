@@ -180,6 +180,10 @@ public class SampleStepDef {
     @When("I select gender as {string}")
     public void iSelectGenderAs(String gender) throws InterruptedException {
         page.selectGender(gender);
-        Thread.sleep(5000);
+    }
+
+    @When("I select country Of Origin is {string}")
+    public void iSelectCountryOfOriginIs(String country) {
+
     }
 }

@@ -80,6 +80,8 @@ public class SapmlePage extends Page {
     @FindBy(xpath = "//select[@name='countryOfOrigin']")
     private WebElement countryDropdown;
 
+    //select[@name='countryOfOrigin']//option[@value='Russia']
+
     @FindBy(xpath = "//span[contains(text(),'Male')]/..//input")
     private WebElement maleGenderRadioButton;
 
@@ -131,9 +133,8 @@ public class SapmlePage extends Page {
         click(saveButton);
     }
 
-    public void selectGender(String gender) {
-        WebElement el = getDriver().findElement(By.xpath("/*[text()='"+gender+"']/..//input"));
-        click(el);
+    public void selectGender(String gender) throws InterruptedException{
+       getDriver().findElement(By.xpath("//*[text()='"+gender+"']/..//input")).click();
     }
 
     public String getTextFromTheNameField() {
