@@ -82,7 +82,7 @@ Feature: Training
     When I select my car makers "Toyota" and "Other"
     When I read related documents
     Then I verify that related documents contains "Document 1"
-    When I select my date of birth as day "31" month "Aug" year "1992"
+    When I select my date of birth as month "Aug" day "31" year "1992"
     When I fill out Additional Information with "name" and "phone"
     When I upload a file
     When I submit the page

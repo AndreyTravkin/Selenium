@@ -239,11 +239,12 @@ public class SampleStepDef {
         // Switch back to original browser (first window)
         getDriver().switchTo().window(winHandleBefore);
 
-        Thread.sleep(5000);
     }
 
-    @When("I select my date of birth as day {string} month {string} year {string}")
-    public void iSelectMyDateOfBirthAsDayMonthYear(String day, String month, String year) {
 
+
+    @When("I select my date of birth as month {string} day {string} year {string}")
+    public void iSelectMyDateOfBirthAsMonthDayYear(String month, String day, String year)  throws  InterruptedException{
+        page.selectDateOfBirth(month, day, year);
     }
 }

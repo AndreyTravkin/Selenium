@@ -107,6 +107,24 @@ public class SapmlePage extends Page {
     @FindBy(xpath = "//textarea[@id='address']")
     private WebElement addressField;
 
+    @FindBy(xpath = "//input[@id='dateOfBirth']")
+    private WebElement dateOfBirth;
+
+    @FindBy(xpath = "//select[@class='ui-datepicker-month']")
+    private WebElement selectDatePickerMonth;
+
+    @FindBy(xpath = "//select[@class='ui-datepicker-year']")
+    private WebElement selectDatePickerYear;
+
+
+    public void selectDateOfBirth(String month, String day, String year) throws InterruptedException {
+        click(dateOfBirth);
+        selectDropdown(month, selectDatePickerMonth);
+        selectDropdown(year, selectDatePickerYear);
+        WebElement selectedDay = getByXpath("//table/tbody/tr/td[@data-handler]/a[contains(text(), '" + day + "' )]");
+        click(selectedDay);
+//        getDriver().findElement(By.xpath("//table/tbody/tr/td[@data-handler]/a[contains(text(), ' " + day + " ' )]")).click();
+    }
 
     public void clickOnRelatedDocumentsButton() throws InterruptedException {
         click(relatedDocumentsButton);
