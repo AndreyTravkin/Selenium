@@ -83,7 +83,7 @@ Feature: Training
     When I read related documents
     Then I verify that related documents contains "Document 1"
     When I select my date of birth as month "Aug" day "31" year "1992"
-    When I fill out Additional Information with "name" and "phone"
+    When I fill out Additional Information with "Andrei" and "5105892769"
     When I upload a file
     When I submit the page
 

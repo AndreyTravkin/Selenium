@@ -246,5 +246,23 @@ public class SampleStepDef {
     @When("I select my date of birth as month {string} day {string} year {string}")
     public void iSelectMyDateOfBirthAsMonthDayYear(String month, String day, String year)  throws  InterruptedException{
         page.selectDateOfBirth(month, day, year);
+        Thread.sleep(9000);
+    }
+
+    @When("I fill out Additional Information with {string} and {string}")
+    public void iFillOutAdditionalInformationWithAnd(String name, String phone) {
+        // switch to ifarame
+        getDriver().switchTo().frame(0);
+
+        page.fillOutContactPersonInfo(name, phone);
+
+        // switch back to the page
+        getDriver().switchTo().defaultContent();
+    }
+
+    @When("I upload a file")
+    public void iUploadAFile() throws InterruptedException {
+        page.chooseFile();
+
     }
 }

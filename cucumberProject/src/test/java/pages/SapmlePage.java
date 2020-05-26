@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 import static support.TestContext.getDriver;
 
 public class SapmlePage extends Page {
@@ -116,14 +118,42 @@ public class SapmlePage extends Page {
     @FindBy(xpath = "//select[@class='ui-datepicker-year']")
     private WebElement selectDatePickerYear;
 
+    @FindBy(xpath = "//input[@id='contactPersonName']")
+    private WebElement contactPersonName;
+
+    @FindBy(xpath = "//input[@id='contactPersonPhone']")
+    private WebElement contactPersonPhone;
+
+    public void chooseFile() {
+        click(chooseFileButton);
+    }
+
+    public void fillOutContactPersonInfo(String name, String phone) {
+        sendKeys(contactPersonName, name);
+        sendKeys(contactPersonPhone, phone);
+    }
+
 
     public void selectDateOfBirth(String month, String day, String year) throws InterruptedException {
         click(dateOfBirth);
         selectDropdown(month, selectDatePickerMonth);
         selectDropdown(year, selectDatePickerYear);
-        WebElement selectedDay = getByXpath("//table/tbody/tr/td[@data-handler]/a[contains(text(), '" + day + "' )]");
-        click(selectedDay);
-//        getDriver().findElement(By.xpath("//table/tbody/tr/td[@data-handler]/a[contains(text(), ' " + day + " ' )]")).click();
+
+        // working solution
+//        WebElement selectedDay = getByXpath("//table/tbody/tr/td[@data-handler]/a[contains(text(), '" + day + "' )]");
+//        click(selectedDay);
+
+
+        // working solution using loop
+        WebElement dateWidget = getDriver().findElement(By.xpath("//table[@class='ui-datepicker-calendar']//tbody"));
+        List<WebElement> columns=dateWidget.findElements(By.tagName("td"));
+
+        for (WebElement cell: columns){
+            if (cell.getText().equals(day)){
+                cell.findElement(By.linkText(day)).click();
+                break;
+            }
+        }
     }
 
     public void clickOnRelatedDocumentsButton() throws InterruptedException {
