@@ -80,8 +80,6 @@ public class SapmlePage extends Page {
     @FindBy(xpath = "//select[@name='countryOfOrigin']")
     private WebElement countryDropdown;
 
-    //select[@name='countryOfOrigin']//option[@value='Russia']
-
     @FindBy(xpath = "//span[contains(text(),'Male')]/..//input")
     private WebElement maleGenderRadioButton;
 
@@ -100,9 +98,17 @@ public class SapmlePage extends Page {
     @FindBy(xpath = "//input[@id='attachment']")
     private WebElement chooseFileButton;
 
+    @FindBy(xpath = "//textarea[@id='address']")
+    private WebElement addressField;
 
-    private void selectCountryFromDropdown(String country) {
-//         Select select = new Select();
+
+
+    public void fillOutAddressField(String txt){
+        sendKeys(addressField, txt);
+    }
+
+    public void selectByVisibleText(String text) throws InterruptedException {
+        selectDropdown(text, countryDropdown);
     }
 
     public void clickOnPrivacyPolicyCheckBox() {

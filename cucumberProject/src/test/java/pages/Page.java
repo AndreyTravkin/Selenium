@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static support.TestContext.getDriver;
@@ -68,5 +69,13 @@ public class Page {
     public void open() {
         getDriver().get(url);
     }
+
+    public void selectDropdown(String text, WebElement element) throws InterruptedException {
+        waitForClickable(element);
+        Select select = new Select(element);
+        select.selectByVisibleText(text);
+    }
+
+
 
 }

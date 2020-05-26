@@ -183,7 +183,12 @@ public class SampleStepDef {
     }
 
     @When("I select country Of Origin is {string}")
-    public void iSelectCountryOfOriginIs(String country) {
+    public void iSelectCountryOfOriginIs(String country) throws InterruptedException {
+       page.selectByVisibleText("Russia");
+    }
 
+    @When("I fill out the address with {string}")
+    public void iFillOutTheAddressWith(String address) throws InterruptedException {
+        page.fillOutAddressField(address);
     }
 }
