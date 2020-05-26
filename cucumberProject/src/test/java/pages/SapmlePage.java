@@ -44,6 +44,9 @@ public class SapmlePage extends Page {
     @FindBy(xpath = "//input[@name='agreedToPrivacyPolicy']")
     private WebElement privacyPolicyCheckBox;
 
+    @FindBy(xpath = "//button[@id='thirdPartyButton']")
+    private WebElement thirdPartyButton;
+
     @FindBy(xpath = "//input[@name='username']")
     private WebElement username;
 
@@ -102,6 +105,14 @@ public class SapmlePage extends Page {
     private WebElement addressField;
 
 
+    public void clickOnallowedToContactButton() {
+        click(allowedToContact);
+    }
+
+    public void  acceptThirdPartyButton() throws InterruptedException{
+        click(thirdPartyButton);
+        getDriver().switchTo().alert().accept();
+    }
 
     public void fillOutAddressField(String txt){
         sendKeys(addressField, txt);

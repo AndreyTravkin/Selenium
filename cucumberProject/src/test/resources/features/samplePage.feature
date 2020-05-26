@@ -77,7 +77,7 @@ Feature: Training
     When I select gender as "Male"
     When I select country Of Origin is "Russia"
     When I fill out the address with "140 S Santa Cruz Ave, Los Gatos, CA 95030"
-    When I accept 3rd party agreement
+    When I accept party agreement
     When I hit checkbox to allow to contact with me
     When I select my car makers
     When I read related documents

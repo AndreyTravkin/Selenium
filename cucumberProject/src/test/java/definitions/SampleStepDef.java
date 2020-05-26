@@ -191,4 +191,15 @@ public class SampleStepDef {
     public void iFillOutTheAddressWith(String address) throws InterruptedException {
         page.fillOutAddressField(address);
     }
+
+
+    @When("I accept party agreement")
+    public void iAcceptPartyAgreement() throws InterruptedException{
+        page.acceptThirdPartyButton();
+    }
+
+    @When("I hit checkbox to allow to contact with me")
+    public void iHitCheckboxToAllowToContactWithMe() {
+        page.clickOnallowedToContactButton();
+    }
 }
