@@ -79,11 +79,10 @@ Feature: Training
     When I fill out the address with "140 S Santa Cruz Ave, Los Gatos, CA 95030"
     When I accept party agreement
     When I hit checkbox to allow to contact with me
-    When I select my car makers
+    When I select my car makers "Toyota" and "Other"
     When I read related documents
     Then I verify that related documents contains "Document 1"
-    When I go back on sample page
-    When I select my date of birth
+    When I select my date of birth as day "31" month "Aug" year "1992"
     When I fill out Additional Information with "name" and "phone"
     When I upload a file
     When I submit the page

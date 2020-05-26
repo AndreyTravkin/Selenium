@@ -92,6 +92,9 @@ public class SapmlePage extends Page {
     @FindBy(xpath = "//select[@name='carMake']//option[contains(text(),'Toyota')]")
     private WebElement toyotaCarMake;
 
+    @FindBy(xpath = "//select[@name='carMake']")
+    private WebElement carMake;
+
     @FindBy(xpath = "//input[@name='allowedToContact']")
     private WebElement allowedToContact;
 
@@ -104,6 +107,10 @@ public class SapmlePage extends Page {
     @FindBy(xpath = "//textarea[@id='address']")
     private WebElement addressField;
 
+
+    public void clickOnRelatedDocumentsButton() throws InterruptedException {
+        click(relatedDocumentsButton);
+    }
 
     public void clickOnallowedToContactButton() {
         click(allowedToContact);
@@ -118,8 +125,13 @@ public class SapmlePage extends Page {
         sendKeys(addressField, txt);
     }
 
-    public void selectByVisibleText(String text) throws InterruptedException {
+
+    public void selectCountryByVisibleText(String text) throws InterruptedException {
         selectDropdown(text, countryDropdown);
+    }
+
+    public void selectCarMakeByVisibleText(String text) throws InterruptedException {
+        selectDropdown(text, carMake);
     }
 
     public void clickOnPrivacyPolicyCheckBox() {

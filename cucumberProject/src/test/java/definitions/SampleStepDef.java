@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.testng.Assert;
 import pages.SapmlePage;
@@ -184,7 +185,7 @@ public class SampleStepDef {
 
     @When("I select country Of Origin is {string}")
     public void iSelectCountryOfOriginIs(String country) throws InterruptedException {
-       page.selectByVisibleText("Russia");
+       page.selectCountryByVisibleText("Russia");
     }
 
     @When("I fill out the address with {string}")
@@ -201,5 +202,48 @@ public class SampleStepDef {
     @When("I hit checkbox to allow to contact with me")
     public void iHitCheckboxToAllowToContactWithMe() {
         page.clickOnallowedToContactButton();
+    }
+
+
+    @When("I select my car makers {string} and {string}")
+    public void iSelectMyCarMakersAnd(String toyota, String other) throws InterruptedException {
+        page.selectCarMakeByVisibleText(toyota);
+        page.selectCarMakeByVisibleText(other);
+    }
+
+    @When("I read related documents")
+    public void iReadRelatedDocuments() throws InterruptedException {
+        page.clickOnRelatedDocumentsButton();
+    }
+
+    @Then("I verify that related documents contains {string}")
+    public void iVerifyThatRelatedDocumentsContains(String expectedText) throws InterruptedException {
+
+        // get current window handle
+
+        String winHandleBefore = getDriver().getWindowHandle();
+
+        // switch to another window handle
+
+        for(String winHandle : getDriver().getWindowHandles()){
+            getDriver().switchTo().window(winHandle);
+        }
+
+        // Assert that actual texr from the page contains our expected text
+        String actualText = getDriver().findElement(By.xpath("//html")).getText();
+        Assert.assertTrue(actualText.contains(expectedText));
+
+        // Close the new window, if that window no more required
+        getDriver().close();
+
+        // Switch back to original browser (first window)
+        getDriver().switchTo().window(winHandleBefore);
+
+        Thread.sleep(5000);
+    }
+
+    @When("I select my date of birth as day {string} month {string} year {string}")
+    public void iSelectMyDateOfBirthAsDayMonthYear(String day, String month, String year) {
+
     }
 }
