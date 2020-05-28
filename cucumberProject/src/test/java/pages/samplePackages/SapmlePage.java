@@ -13,6 +13,7 @@ public class SapmlePage extends Page {
         setUrl("http://skryabin.com/webdriver/html/sample.html");
     }
 
+
     @FindBy(xpath = "//b[@id='location']")
     private WebElement location;
 
@@ -103,8 +104,8 @@ public class SapmlePage extends Page {
     @FindBy(xpath = "//button[contains(text(),'Related documents (click)')]")
     private WebElement relatedDocumentsButton;
 
-    @FindBy(xpath = "//input[@id='attachment']")
-    private WebElement chooseFileButton;
+    @FindBy(id = "attachment")
+    private WebElement uploadFile;
 
     @FindBy(xpath = "//textarea[@id='address']")
     private WebElement addressField;
@@ -124,8 +125,20 @@ public class SapmlePage extends Page {
     @FindBy(xpath = "//input[@id='contactPersonPhone']")
     private WebElement contactPersonPhone;
 
-    public void chooseFile() {
-        click(chooseFileButton);
+    public void chooseFile(String fileName) {
+        String pathname = null;
+        String os = System.getProperty("os.name").toLowerCase();
+
+        if (os.contains("mac")) {
+          //  pathname = "/Users/" + System.getProperty("user.name") + "/Documents/Selenium/cucumberProject/src/test/resources/data/attachments/"+fileName+"";
+            pathname = System.getProperty("user.dir") + "/src/test/resources/data/attachments/"+fileName+"";
+        } else {
+
+            pathname = "/src/test/resources/data/attachments/"+fileName+"";
+        }
+
+        getDriver().findElement(By.id("attachment")).sendKeys(pathname);
+
     }
 
     public void fillOutContactPersonInfo(String name, String phone) {
